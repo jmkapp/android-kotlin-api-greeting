@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AndroidKotlinApiGreeting</string>
+    <string name="button_send">Get API greeting</string>
+</resources>
