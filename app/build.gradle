@@ -34,6 +34,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0.pr2'
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.7"
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: '1.1.1'
 }
 repositories {
     mavenCentral()

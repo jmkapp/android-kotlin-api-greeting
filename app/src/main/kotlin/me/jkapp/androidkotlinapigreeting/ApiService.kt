@@ -4,6 +4,8 @@ import android.app.IntentService
 import android.app.PendingIntent
 import android.content.Intent
 import android.util.Log
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 
 class ApiService : IntentService(_name)
 {
@@ -21,9 +23,9 @@ class ApiService : IntentService(_name)
         val reply : PendingIntent = intent.getParcelableExtra(PENDING_RESULT_EXTRA)
 
         val consumer = JsonApiConsumer(intent.getStringExtra(URL_EXTRA))
-        val parser = JsonParser(consumer.readJsonFeed())
 
-        val greeting : Greeting = parser.getGreeting()
+        val mapper = jacksonObjectMapper()
+        val greeting : Greeting = mapper.readValue<Greeting>(consumer.readJsonFeed())
 
         val result = Intent()
         result.putExtra(API_RESULT_EXTRA, greeting)
