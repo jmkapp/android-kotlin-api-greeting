@@ -4,13 +4,11 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 
 class ApiGreetingActivity : AppCompatActivity()
 {
-    private val _url= "http://jsbr.us-west-2.elasticbeanstalk.com/greeting"
     private val _apiRequestCode = 0
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -24,7 +22,6 @@ class ApiGreetingActivity : AppCompatActivity()
         val pendingResult: PendingIntent = createPendingResult(_apiRequestCode, Intent(), 0)
         val intent = Intent(applicationContext, ApiService::class.java)
         intent.putExtra(ApiService.PENDING_RESULT_EXTRA, pendingResult)
-        intent.putExtra(ApiService.URL_EXTRA, _url)
         startService(intent)
     }
 
