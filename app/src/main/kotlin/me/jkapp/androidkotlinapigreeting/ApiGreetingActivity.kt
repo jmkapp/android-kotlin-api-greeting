@@ -20,8 +20,11 @@ class ApiGreetingActivity : AppCompatActivity()
     fun getApiMessage(view: View)
     {
         val pendingResult: PendingIntent = createPendingResult(_apiRequestCode, Intent(), 0)
+        val url = getString(R.string.api_url)
+
         val intent = Intent(applicationContext, ApiService::class.java)
         intent.putExtra(ApiService.PENDING_RESULT_EXTRA, pendingResult)
+        intent.putExtra(ApiService.URL_EXTRA, url)
         startService(intent)
     }
 
