@@ -4,7 +4,7 @@ It consumes the API created by this project:
 
 https://github.com/jmkapp/kotlin-spring-boot-greeting
 
-After you have loaded the Spring Boot app into a cloud service like AWS Elastic Beanstalk, change the URL in the `ApiService.kt` file to your URL.
+After you have loaded the Spring Boot app into a cloud service like AWS Elastic Beanstalk, change the URL in the `strings.xml` file to your URL.
 
 This app takes the advice given here:
 

@@ -4,6 +4,7 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 
@@ -20,8 +21,11 @@ class ApiGreetingActivity : AppCompatActivity()
     fun getApiMessage(view: View)
     {
         val pendingResult: PendingIntent = createPendingResult(_apiRequestCode, Intent(), 0)
+        val url = getString(R.string.api_url)
+
         val intent = Intent(applicationContext, ApiService::class.java)
         intent.putExtra(ApiService.PENDING_RESULT_EXTRA, pendingResult)
+        intent.putExtra(ApiService.URL_EXTRA, url)
         startService(intent)
     }
 

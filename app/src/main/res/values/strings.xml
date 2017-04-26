@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AndroidKotlinApiGreeting</string>
     <string name="button_send">Get API greeting</string>
+    <string name ="api_url">http://jsbr.us-west-2.elasticbeanstalk.com</string>
 </resources>

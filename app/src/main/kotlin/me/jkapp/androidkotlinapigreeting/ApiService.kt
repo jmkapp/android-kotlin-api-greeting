@@ -14,28 +14,23 @@ class ApiService : IntentService(_name)
     {
         private val _name : String = ApiService::class.java.simpleName
         val PENDING_RESULT_EXTRA : String = "pending_result"
-        val API_RESULT_EXTRA : String = "url"
+        val URL_EXTRA : String = "url"
+        val API_RESULT_EXTRA : String = "greeting"
         val RESULT_CODE : Int = 0
-    }
-
-    private val _greetingApi : GreetingApi
-    private val _url : String = "http://jsbr.us-west-2.elasticbeanstalk.com"
-
-    init
-    {
-        val retrofit = Retrofit.Builder()
-                .baseUrl(_url)
-                .addConverterFactory(MoshiConverterFactory.create())
-                .build()
-
-        _greetingApi = retrofit.create(GreetingApi::class.java)
     }
 
     override fun onHandleIntent(intent: Intent)
     {
         val reply : PendingIntent = intent.getParcelableExtra(PENDING_RESULT_EXTRA)
 
-        val callResponse : Call<Greeting> = _greetingApi.getGreeting()
+        val retrofit = Retrofit.Builder()
+                .baseUrl(intent.getStringExtra(URL_EXTRA))
+                .addConverterFactory(MoshiConverterFactory.create())
+                .build()
+
+        val greetingApi = retrofit.create(GreetingApi::class.java)
+
+        val callResponse : Call<Greeting> = greetingApi.getGreeting()
         val response = callResponse.execute()
 
         if(response.isSuccessful)
